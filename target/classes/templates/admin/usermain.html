@@ -152,51 +152,107 @@
 <!--</div>-->
 
 <!--中间内容-->
-<div class="Content-Main">
-    <form  action="" method="post" class="form-userInfo" th:action="@{/user/useredit/{id} (id=${session.user.getId()})}">
-        <h1>个人信息</h1>
-        <span class="text1">请在文本框中完善您的个人信息：</span>
 
-        <div>
-            <img src="">
+
+<div  class="m-container m-padded-tb-big animated fadeIn">
+    <div class="ui container">
+
+        <div class="ui stackable grid">
+            <div class="eleven wide column">
+                <div class="ui segment">
+                    <div class="Content-Main">
+                        <form  action="" method="post" class="form-userInfo" th:action="@{/user/useredit/{id} (id=${session.user.getId()})}" enctype="multipart/form-data">
+                            <h1>个人信息</h1>
+                            <span class="text1">请在文本框中完善您的个人信息：</span>
+
+                            <div>
+
+                                <img class="ui avatar image" th:src="@{'/images/'+${session.user.getAvatar()}}"/>
+                                <!--            <img src="../../static/images/avatar.png">-->
+                            </div>
+                            <label>
+                                <span>更改头像 :</span>
+                                <input type="file"  name="file" placeholder="" >
+                            </label>
+
+                            <label>
+                                <span>username :</span>
+                                <input type="text"  name="username" placeholder="Your Full Name" th:value="${session.user.getUsername()}">
+                            </label>
+
+                            <label>
+                                <span>nickname :</span>
+                                <input type="text"  name="nickname" placeholder="Your Full Name" th:value="${session.user.getNickname()}">
+                            </label>
+                            <!--        <label class="Main-sex">-->
+                            <!--            <span>Your sex:</span>-->
+                            <!--            <input type="checkbox" class="man">男-->
+                            <!--            <input type="checkbox" class="women">女-->
+                            <!--        </label>-->
+                            <label>
+                                <span>email :</span>
+                                <input type="email" name="email" placeholder="@.com" th:value="${session.user.getEmail()}">
+                            </label>
+                            <!--        <label>-->
+                            <!--            <span>createTime :</span>-->
+                            <!--            <input type="text" name="createTime" placeholder="You createTime" th:value="${session.user.getCreateTime()}">-->
+                            <!--        </label>-->
+                            <!--        <label>-->
+                            <!--            <span>updateTime</span>-->
+                            <!--            <input type="text" name="updateTime" placeholder="Your updateTime" th:value="${session.user.getUpdateTime()}"></input>-->
+                            <!--        </label>-->
+
+                            <label>
+                                <button type="submit" class="button" th:align="center" th:value="提交"></button>
+                            </label>
+                        </form>
+                    </div>         </div>
+            </div>
+            <div class="five wide column">
+                <div class="ui top attached segment">
+                    <div class="ui header">关于我</div>
+                </div>
+                <div class="ui attached segment">
+                    <p class="m-text">keep on going never give up</p>
+                    <p class="m-text">考研团队</p>
+                    <p class="m-text">考研不放弃</p>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui orange basic left pointing label">编程</div>
+                    <div class="ui orange basic left pointing label">学习</div>
+                    <div class="ui orange basic left pointing label">音乐</div>
+                    <div class="ui orange basic left pointing label">运动</div>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Java</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">JavaScript</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">JSP</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">C++</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">MYSQL</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">...</div>
+                </div>
+                <div class="ui bottom attached segment">
+                    <!--            <a href="#" class="ui circular icon button"><i class="github icon"></i></a>-->
+                    <!--            <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>-->
+                    <!--            <a href="#" class="ui qq circular icon button" data-content="734503844" data-position="bottom center"><i class="qq icon"></i></a>-->
+                    <a href="#" th:href="@{/admin/logout}"  class="ui circular icon button"  data-position="bottom center"><i class="icon setting"></i>注销</a>
+                    <a href="#" th:href="@{/user/updatepassword/{id} (id=${session.user.getId()})}"  class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>改密</a>
+                    <a href="#" th:href="@{/user/userinfo/{id} (id=${session.user.getId()}) }" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>信息</a>
+
+
+
+                </div>
+
+                <div class="ui wechat-qr flowing popup transition hidden">
+                    <img  th:src="@{/images/hyfwechat.jpg}" alt="" class="ui rounded image" style="width: 110px">
+                </div>
+
+            </div>
         </div>
-<!--        <label>-->
-<!--            <span>Your id :</span>-->
-<!--            <input type="text"  name="id" placeholder="Your Full Name" th:value="${session.user.getId()}">-->
-<!--        </label>-->
 
-        <label>
-            <span>username :</span>
-            <input type="text"  name="username" placeholder="Your Full Name" th:value="${session.user.getUsername()}">
-        </label>
-
-        <label>
-            <span>nickname :</span>
-            <input type="text"  name="nickname" placeholder="Your Full Name" th:value="${session.user.getNickname()}">
-        </label>
-<!--        <label class="Main-sex">-->
-<!--            <span>Your sex:</span>-->
-<!--            <input type="checkbox" class="man">男-->
-<!--            <input type="checkbox" class="women">女-->
-<!--        </label>-->
-        <label>
-            <span>email :</span>
-            <input type="email" name="email" placeholder="@.com" th:value="${session.user.getEmail()}">
-        </label>
-<!--        <label>-->
-<!--            <span>createTime :</span>-->
-<!--            <input type="text" name="createTime" placeholder="You createTime" th:value="${session.user.getCreateTime()}">-->
-<!--        </label>-->
-<!--        <label>-->
-<!--            <span>updateTime</span>-->
-<!--            <input type="text" name="updateTime" placeholder="Your updateTime" th:value="${session.user.getUpdateTime()}"></input>-->
-<!--        </label>-->
-
-        <label>
-            <button type="submit" class="button" th:align="center" th:value="提交"></button>
-        </label>
-    </form>
+    </div>
 </div>
+
 
 
 <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">

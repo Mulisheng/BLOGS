@@ -2,6 +2,7 @@ package com.lrm.web.admin;
 
 import com.lrm.dao.UserRepository;
 import com.lrm.po.User;
+import com.lrm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,6 +27,10 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/user")
 public class UserRegisterController {
+
+    @Autowired
+    private UserService userService;
+
     @Value("${file.path}")
     private String filePath;
 
@@ -61,20 +67,24 @@ public class UserRegisterController {
     public String userRegister(){
         return "register";
     }
+    @GetMapping("/userlogout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
+        session.setAttribute("flag",0);
+        return "redirect:/user/res";
+    }
 
     public static String reversel1(String str){
         return new StringBuffer(str).reverse().toString();
     }
 
     @PostMapping("/register")
-    public String register(User user, RedirectAttributes attributes, @RequestParam(name = "file")MultipartFile file, Model model) throws Exception {
+    public String register(User user, RedirectAttributes attributes, /*@RequestParam(name = "file")MultipartFile file,*/ Model model) throws Exception {
         System.out.println("进register");
-
-       String extName= file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-       String fileName= UUID.randomUUID().toString()+extName;
-        FileCopyUtils.copy(file.getInputStream(),new FileOutputStream(new File(filePath+fileName)));
-
-
+        System.out.println(user.getUsername());
+        String fileName ="avatar.png";
+//        User u1=userService.checkUserName(user.getUsername());
+//        System.out.println(u1.getUsername());
         if(!isLetterDigit(user.getPassword())){
             attributes.addFlashAttribute("message", "密码6-12位，并且包含数字和字母");
             System.out.println("else");
@@ -82,17 +92,29 @@ public class UserRegisterController {
             return "redirect:/user/res";
         }
 
-        //加密
-        user.setPassword(encrytion(user.getPassword()));
-        SimpleDateFormat time = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        Date date=new Date();
-        System.out.println("当前时间:"+time.format(date));
-//        user.setAvatar(fileName);
-        user.setCreateTime(date);
-        user.setType(2);
-        userRepository.save(user);
 
-        return "redirect:/admin" ;
+        if (userRepository.findUserByUsername(user.getUsername()) != null)
+        {
+            attributes.addFlashAttribute("message", "用户名已存在");
+            System.out.println("用户名已存在"+user.getUsername());
+
+            return "redirect:/user/res";
+
+        }
+        else {
+
+            //加密
+            user.setPassword(encrytion(user.getPassword()));
+            SimpleDateFormat time = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+            Date date = new Date();
+            System.out.println("当前时间:" + time.format(date));
+            user.setAvatar(fileName);
+            user.setCreateTime(date);
+            user.setType(2);
+            userRepository.save(user);
+            attributes.addFlashAttribute("message", "注册成功，请登录");
+            return "redirect:/user";
+        }
     }
 
 

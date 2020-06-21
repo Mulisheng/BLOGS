@@ -17,8 +17,8 @@
       <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
       <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
       <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>
-      <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="mini info icon"></i>关于我</a>
-      <a href="#" th:href="@{/user}" class="m-item item m-mobile-hide" th:classappend="${n==6} ? 'active'"><i class="mini info icon"></i>个人主页</a>
+      <a href="#" th:if="${session.user != null && session.flag != 0}" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="mini info icon"></i>关于我</a>
+      <a href="#" th:if="${session.flag == 0}"  th:href="@{/user}" class="m-item item m-mobile-hide" th:classappend="${n==6} ? 'active'"><i class="mini info icon"></i>个人主页</a>
       <a href="#" th:href="@{/admin}" class="m-item item m-mobile-hide" th:classappend="${n==7} ? 'active'"><i class="mini info icon"></i>管理员登录</a>
       <a href="#" th:href="@{/user/res}" class="m-item item m-mobile-hide" th:classappend="${n==8} ? 'active'"><i class="mini info icon"></i>注册</a>
       <div class="right m-item item m-mobile-hide">

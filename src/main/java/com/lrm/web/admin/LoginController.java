@@ -1,5 +1,6 @@
 package com.lrm.web.admin;
 
+import com.lrm.dao.UserRepository;
 import com.lrm.po.User;
 import com.lrm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,26 +20,23 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
-
-
     @Autowired
     private UserService userService;
+    private UserRepository userRepository;
 
     @GetMapping
     public String loginPage( HttpSession session) {
         //游客  设置的地方在/位置
-        if(session.getAttribute("flag").equals(0)){
-            return "admin/login";
-        }
+//        if(session.getAttribute("flag").equals(0)){
+//            return "admin/login";
+//        }
 
         Object obj=session.getAttribute("user");
         User u1=(User)obj;
         System.out.println("来了来了真的来了");
 
-
-
         System.out.println("来了来了真的来了");
-        if(session.getAttribute("user")!=null && session.getAttribute("user")!="" && u1.getType().equals(1) ){
+        if(!session.getAttribute("flag").equals(0) && session.getAttribute("user")!=null && session.getAttribute("user")!="" && u1.getType().equals(1) ){
             return "admin/index";
         }
         System.out.println("是的是的是的来了来了真的来了1111111111111111111111");
@@ -60,8 +58,10 @@ public class LoginController {
                         @RequestParam String password,
                         HttpSession session,
                         RedirectAttributes attributes) {
+        System.out.println("进/login");
         password=encrytion(password);
         User user = userService.checkUser(username, password);
+
         if (user != null) {
             if ( user.getType().equals(2)) {
                 //上错位置了
@@ -76,8 +76,10 @@ public class LoginController {
 
             user.setPassword(null);
             session.setAttribute("user",user);
-            session.setAttribute("flag",1);
-            return "admin/index";
+            session.setAttribute("flag",2);
+            System.out.println("马上跳转");
+            session.setAttribute("flag1",2);
+            return "redirect:/admin";
         } else {
             attributes.addFlashAttribute("message", "用户名和密码错误");
             System.out.println("else");
@@ -90,7 +92,8 @@ public class LoginController {
     public String logout(HttpSession session) {
         session.removeAttribute("user");
         session.setAttribute("flag",0);
-        return "redirect:/admin";
+        session.setAttribute("flag1",0);
+        return "redirect:/";
     }
 
 

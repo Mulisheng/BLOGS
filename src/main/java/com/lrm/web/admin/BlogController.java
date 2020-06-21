@@ -13,10 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -81,13 +78,24 @@ public class BlogController {
 
 
     @PostMapping("/blogs")
-    public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {
+    public String post(Blog blog, RedirectAttributes attributes, HttpSession session, @RequestParam(name = "flag") String flag) {
         blog.setUser((User) session.getAttribute("user"));
         blog.setType(typeService.getType(blog.getType().getId()));
         blog.setTags(tagService.listTag(blog.getTagIds()));
+        System.out.println("传过来的flag+"+flag);
+        if( flag.equals("") || flag==null)
+        {
+            flag="原创";
+        }
+        blog.setFlag(flag);
         Blog b;
+        System.out.println("传过来的flag+"+flag);
         if (blog.getId() == null) {
+
+            System.out.println(blog.getFlag());
+
             b =  blogService.saveBlog(blog);
+            System.out.println(b);
         } else {
             b = blogService.updateBlog(blog.getId(), blog);
         }

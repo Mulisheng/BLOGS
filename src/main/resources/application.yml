@@ -7,4 +7,4 @@ spring:
     basename: i18n/messages
 
 comment.avatar: /images/avatar.png
-file.path: F:/upload/
+file.path: F:\BLOGS\2020-6-17-final\2020-6-17-final\BLOGS\src\main\resources\static\images\

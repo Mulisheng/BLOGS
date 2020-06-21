@@ -7,6 +7,112 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
   <link rel="stylesheet" href="../static/css/me.css">
 </head>
+<style type="text/css">
+  .Content-Main{
+    max-width: 500px;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-shadow: 1px 1px 1px #444;
+    color: #D3D3D3;
+    background: cadetblue;
+  }
+  .Content-Main h1{
+    padding: 8px 0px 40px 10px;
+    display: block;
+    border-bottom: 1px solid #444;
+  }
+  .text1{
+    margin-left: 3px;
+  }
+  .Content-Main label{
+    margin: 0px 0px 10px;
+    display: block;
+  }
+  .fileInputContainer{
+    height: 99px;
+    width: 99px;
+    margin: 20px 20px 20px 20px ;
+    border: none;
+    background: url("static/images/avatar.png");
+    overflow: hidden;
+    position: relative;
+  }
+  .fileInput{
+    height: 106px;
+    border: none;
+    font-size: 300px;
+    opacity: 0;
+    filter:alpha(opacity=0);
+    cursor: pointer;
+    position: absolute;
+  }
+  .Content-Main label>span{
+    width: 20%;
+    float: left;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 8px;
+    font-weight: bold;
+  }
+  .Main-sex{
+    padding-right: 13px;
+    padding-bottom: 13px;
+    font-weight: bold;
+    line-height: 4px;
+  }
+  .Main-sex input[type=checkbox]{
+    margin-top:6px;
+    vertical-align:middle;
+  }
+  .Content-Main input[type="text"],.Content-Main input[type="email"],.Content-Main textarea{
+    height: 25px;
+    width: 70%;
+    line-height: 15px;
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    border: none;
+    border-radius:2px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    outline: 0 none;
+    background:  #DFDFDF;
+    color: #525252;
+  }
+  .Content-Main textarea{
+    height: 100px;
+    width: 70%;
+    padding: 5px 0px 0px 5px;
+  }
+  .Content-Main .button{
+    /*padding: 8px 24px 8px 24px;*/
+    /*margin-bottom: 10px;*/
+    /*border: none;*/
+    /*border-radius: 50px;*/
+    /*-moz-border-radius: 50px;*/
+    /*-webkit-border-radius: 50px;*/
+    /*font-weight: bold;*/
+    /*text-shadow: 1px 1px 1px #FFE477;*/
+    /*box-shadow: 1px 1px 1px  #3D3D3D;*/
+    /*-moz-box-shadow: 1px 1px 1px  #3D3D3D;*/
+    /*-webkit-box-shadow: 1px 1px 1px  #3D3D3D;*/
+    /*color: darkseagreen;*/
+    /*background: white;*/
+    height: 30px;
+    width: 100px;
+    align-content: center;
+
+  }
+  .Content-Main .button:hover{
+    /*color:  #333;*/
+    /*background-color:  #EBEBEB ;*/
+  }
+</style>
 <body>
 
   <!--导航-->
@@ -26,6 +132,8 @@
           </div>
         </div>
       </div>
+
+
     </div>
     <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
       <i class="sidebar icon"></i>
@@ -39,8 +147,54 @@
       <div class="ui stackable grid">
         <div class="eleven wide column">
           <div class="ui segment">
-            <img src="https://unsplash.it/800/600?image=1005" alt="" class="ui rounded image">
-          </div>
+            <div class="Content-Main">
+              <form  action="" method="post" class="form-userInfo" th:action="@{/user/useredit/{id} (id=${session.user.getId()})}" enctype="multipart/form-data">
+                <h1>个人信息</h1>
+                <span class="text1">请在文本框中完善您的个人信息：</span>
+
+                <div>
+
+                  <img align="center" class="ui medium circular mini image" th:src="@{'/images/'+${session.user.getAvatar()}}"/>
+                  <!--            <img src="../../static/images/avatar.png">-->
+                </div>
+                <label>
+                  <span>更改头像 :</span>
+                  <input type="file"  name="file" placeholder="" accept="image/*">
+                </label>
+
+                <label>
+                  <span>username :</span>
+                  <input type="text"  name="username" placeholder="Your Full Name" th:value="${session.user.getUsername()}">
+                </label>
+
+                <label>
+                  <span>nickname :</span>
+                  <input type="text"  name="nickname" placeholder="Your Full Name" th:value="${session.user.getNickname()}">
+                </label>
+                <!--        <label class="Main-sex">-->
+                <!--            <span>Your sex:</span>-->
+                <!--            <input type="checkbox" class="man">男-->
+                <!--            <input type="checkbox" class="women">女-->
+                <!--        </label>-->
+                <label>
+                  <span>email :</span>
+                  <input type="email" name="email" placeholder="@.com" th:value="${session.user.getEmail()}">
+                </label>
+                <!--        <label>-->
+                <!--            <span>createTime :</span>-->
+                <!--            <input type="text" name="createTime" placeholder="You createTime" th:value="${session.user.getCreateTime()}">-->
+                <!--        </label>-->
+                <!--        <label>-->
+                <!--            <span>updateTime</span>-->
+                <!--            <input type="text" name="updateTime" placeholder="Your updateTime" th:value="${session.user.getUpdateTime()}"></input>-->
+                <!--        </label>-->
+
+
+                <div align="center">
+                  <button type="submit" class="ui primary button" th:align="center"    >保存</button>
+                </div>
+              </form>
+            </div>         </div>
         </div>
         <div class="five wide column">
           <div class="ui top attached segment">
@@ -50,7 +204,7 @@
             <p class="m-text">keep on going never give up</p>
             <p class="m-text">考研团队</p>
             <p class="m-text">考研不放弃</p>
-          </div>-->
+          </div>
           <div class="ui attached segment">
             <div class="ui orange basic left pointing label">编程</div>
             <div class="ui orange basic left pointing label">学习</div>
@@ -66,14 +220,23 @@
             <div class="ui teal basic left pointing label m-margin-tb-tiny">...</div>
           </div>
           <div class="ui bottom attached segment">
-            <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
-            <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
-            <a href="#" class="ui qq circular icon button" data-content="865729312" data-position="bottom center"><i class="qq icon"></i></a>
+<!--            <a href="#" class="ui circular icon button"><i class="github icon"></i></a>-->
+<!--            <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>-->
+<!--            <a href="#" class="ui qq circular icon button" data-content="734503844" data-position="bottom center"><i class="qq icon"></i></a>-->
+            <a href="#" th:href="@{/admin/logout}"  class="ui circular icon button"  data-position="bottom center"><i class="icon setting"></i>注销</a>
+            <a href="#" th:href="@{/user/updatepassword/{id} (id=${session.user.getId()})}"  class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>改密</a>
+            <a href="#" th:href="@{/user/userinfo/{id} (id=${session.user.getId()}) }" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>信息</a>
+            <a href="#" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>帖子</a>
+
+
+
+
           </div>
 
           <div class="ui wechat-qr flowing popup transition hidden">
-            <img src="../static/images/hyfwechat.jpg" th:src="@{/images/hyfwechat.jpg}" alt="" class="ui rounded image" style="width: 110px">
+            <img  th:src="@{/images/hyfwechat.jpg}" alt="" class="ui rounded image" style="width: 110px">
           </div>
+
           </div>
       </div>
 
@@ -82,6 +245,8 @@
 
   <br>
   <br>
+
+
   <!--底部footer-->
   <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
     <div class="ui center aligned container">
