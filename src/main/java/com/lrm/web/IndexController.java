@@ -1,33 +1,35 @@
 package com.lrm.web;
 
-import com.lrm.NotFoundException;
+import com.lrm.dao.BiaoRepository;
+import com.lrm.dao.CollectRepository;
 import com.lrm.dao.HistoryRepository;
-import com.lrm.dao.UserRepository;
-import com.lrm.po.Blog;
-import com.lrm.po.History;
-import com.lrm.po.Type;
-import com.lrm.po.User;
+//import com.lrm.dao.ReportRepository;
+import com.lrm.dao.RtRepository;
+import com.lrm.po.*;
 import com.lrm.service.*;
 import com.lrm.vo.BlogQuery;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Array;
 import java.util.List;
 
 @Controller
 public class IndexController {
+    @Autowired
+    private RtService rtService;
+
+    @Autowired
+    private CollectService collectService;
+
     @Autowired
     private HistoryService historyService;
 
@@ -39,6 +41,86 @@ public class IndexController {
 
     @Autowired
     private TagService tagService;
+    @Autowired
+    private BiaoService biaoService;
+
+    @Autowired
+    private RtRepository reportRepository;
+
+    @Autowired
+    private BiaoRepository biaoRepository;
+    @RequestMapping("/dct2222")
+    private String dct(){
+        System.out.println("report in");
+        return "report";
+    }
+
+    @RequestMapping("/dct12222")
+    private String dct1(Biao biao, RedirectAttributes attributes)throws Exception{
+        System.out.println("report1 in");
+//        System.out.println(r);
+//        Long a=new Long(1);
+//        report.setId(a);
+//        Report report1=reportRepository.getOne(a);
+//        System.out.println(report1)
+
+//        report.setDes(des);
+//        System.out.println(report.toString());
+//        System.out.println("save before");
+//        if(report!=null){
+//            System.out.println("you");
+//        }
+//        rtService.s(report);
+
+//        System.out.println(reportRepository.save(r));
+//        System.out.println(dt);
+//        biao.setDct(dt);
+        System.out.println("biao.getDct:"+biao.getDct());
+        biaoService.bsave(biao);
+        attributes.addFlashAttribute("message", "提交成功");
+        System.out.println("跳转前");
+        //对数据进行处理
+        return "redirect:/about";
+    }
+
+
+    @RequestMapping("/recommentblog/{id}")
+    public String recomment(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+                       @PathVariable Long id, Model model,BlogQuery blog) {
+        System.out.println("recommentblog in:");
+        List<Tag> tags = tagService.listTagTop(10000);
+        if (id == -1) {
+            id = tags.get(0).getId();
+        }
+        Page<Blog> b=blogService.listBlog2(pageable,blog);
+        System.out.println("++++++Blog:");
+        for (Blog bb:b
+        ) {
+            System.out.println(bb);
+        }
+
+
+
+
+        model.addAttribute("tags", tags);
+        model.addAttribute("page", blogService.listBlog2(pageable,blog));
+        model.addAttribute("activeTagId", id);
+        System.out.println("rerererere");
+        return "recommentblog";
+    }
+
+//    private String recomment(){
+//        System.out.println("rerererere");
+//        return "recommentblog";
+//    }
+
+    @RequestMapping("/userPost")
+    public String post(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+                       BlogQuery blog, Model model){
+        model.addAttribute("types", typeService.listType());
+        model.addAttribute("page", blogService.listBlog(pageable, blog));
+        return "userPost";
+    }
 
     @GetMapping("/")
     public String index(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
@@ -92,6 +174,8 @@ public class IndexController {
         return "search";
     }
 
+
+
     @Autowired
     private HistoryRepository historyRepository;
     /////在这里添加  HISTORY history
@@ -111,7 +195,25 @@ public class IndexController {
 //            }
 
             User user=(User)session.getAttribute("user");
-            System.out.println("user.id:"+user.getId() );
+            if(session.getAttribute("flag").equals(0)){
+                model.addAttribute("collect",0);
+            }else{
+                System.out.println("uid:"+user.getId());
+
+                Collect cc=collectService.checkCollect(id,user.getId());
+
+                System.out.println(cc);
+                if ( cc!= null) {
+                    Collect c = collectService.checkCollect(id, user.getId());
+                    model.addAttribute("collect",1);
+                }
+                else{
+                    model.addAttribute("collect",0);
+                }
+            }
+
+
+//            System.out.println("user.id:"+user.getId() );
             History history2=historyService.check(user.getId(),id);
             System.out.println("还没进");
 //            System.out.println("id:"+history2.toString());

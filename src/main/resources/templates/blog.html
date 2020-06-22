@@ -43,7 +43,7 @@
         <div class="ui horizontal link list">
           <div class="item">
             <img src="https://unsplash.it/100/100?image=1005" th:src="@{'/images/'+${blog.user.getAvatar()}}" alt="" class="ui avatar image">
-            <div class="content"><a href="#" th:href="@{/user/other/{id} (id=${blog.user.getId()}  ) }" class="header" th:text="${blog.user.nickname}">李仁密</a></div>
+            <div class="content"><a href="#" th:href="@{/user/other/{id} (id=${blog.user.getId()}  ) }" class="header" th:text="${blog.user.nickname}">木璃笙</a></div>
           </div>
           <div class="item">
             <i class="calendar icon"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
@@ -51,6 +51,23 @@
           <div class="item">
             <i class="eye icon"></i> <span th:text="${blog.views}">2342</span>
           </div>
+          <div class="item">
+            <form method="post"action="#" th:action="@{/dct/dct1/{id} (id=${blog.getId()}) }">
+            <button id="reportButton" class="ui gray basic button">举报</button>
+<!--              <p th:name="url" type="hidden" th:value="${#httpServletRequest.getRequestURI().toString()}"></p>-->
+            </form>
+          </div>
+
+          <div class="item">
+            <form method="post"action="#" th:action="@{/collect/add/{userid}/{blogid}/{title} (userid=${session.user.getId()},blogid=${blog.getId()},title=${blog.getTitle()}) }">
+              <button class="ui button"  th:if="${collect}==0" th:value="已收藏">收藏</button>
+              <!--              <p th:name="url" type="hidden" th:value="${#httpServletRequest.getRequestURI().toString()}"></p>-->
+            </form>
+          </div>
+
+
+
+<!--          **************************************************-->
         </div>
       </div>
       <div class="ui attached segment">
@@ -774,8 +791,6 @@ h5,h6{font-size:1em;}
       $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
     });
 
-
-
     $('#commentpost-btn').click(function () {
       var boo = $('.ui.form').form('validate form');
       var v1=[[${session.flag}]];
@@ -792,7 +807,6 @@ h5,h6{font-size:1em;}
 
         console.log('校验失败');
       }
-
     });
     
     function postData() {
@@ -803,7 +817,6 @@ h5,h6{font-size:1em;}
         "email"   : $("[name='email']").val(),
         "content" : $("[name='content']").val()
       },function (responseTxt, statusTxt, xhr) {
-//        $(window).scrollTo($('#comment-container'),500);
         clearContent();
       });
     }
@@ -814,7 +827,6 @@ h5,h6{font-size:1em;}
       $("[name='content']").attr("placeholder", "请输入评论信息...");
     }
 
-
     function reply(obj) {
       var commentId = $(obj).data('commentid');
       var commentNickname = $(obj).data('commentnickname');
@@ -823,7 +835,6 @@ h5,h6{font-size:1em;}
       $(window).scrollTo($('#comment-form'),500);
     }
 
-    
   </script>
 </body>
 </html>

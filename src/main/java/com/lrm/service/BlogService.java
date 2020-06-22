@@ -15,6 +15,7 @@ public interface BlogService {
 
     Blog getAndConvert(Long id);
 
+//    ②全部获取
     Page<Blog> listBlog(Pageable pageable,BlogQuery blog);
 
     Page<Blog> listBlog(Pageable pageable);
@@ -34,4 +35,8 @@ public interface BlogService {
     Blog updateBlog(Long id,Blog blog);
 
     void deleteBlog(Long id);
+
+    public Page<Blog> listBlog2(Pageable pageable, BlogQuery blog);
+
+
 }

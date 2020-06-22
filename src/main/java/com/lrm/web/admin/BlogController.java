@@ -1,5 +1,6 @@
 package com.lrm.web.admin;
 
+import com.lrm.dao.BlogRepository;
 import com.lrm.po.Blog;
 import com.lrm.po.Type;
 import com.lrm.po.User;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by limi on 2017/10/15.
@@ -31,6 +35,8 @@ public class BlogController {
 
 
     @Autowired
+    private BlogRepository blogRepository;
+    @Autowired
     private BlogService blogService;
     @Autowired
     private TypeService typeService;
@@ -39,11 +45,30 @@ public class BlogController {
 
     @GetMapping("/blogs")
     public String blogs(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
-                        BlogQuery blog, Model model) {
+                        BlogQuery blog, Model model,HttpSession session) {
         model.addAttribute("types", typeService.listType());
         model.addAttribute("page", blogService.listBlog(pageable, blog));
-        return LIST;
+        if (session.getAttribute("user").equals(2)) {
+            return LIST;
+        }
+        else if(session.getAttribute("user").equals(1)){
+            return "redirect:/userPost";
+        }
+        return "redirect:/userPost";
     }
+
+
+    //①传入参数 Pageable  BlogQuery
+    @GetMapping("/user/blogs/{id}")
+    public String userBlogs(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,@PathVariable Long id,Model model,BlogQuery blog)
+    {
+        model.addAttribute("types", typeService.listType());
+        model.addAttribute("page", blogService.listBlog(pageable, blog));
+        return "userPost";
+    }
+
+
+
 
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
@@ -54,7 +79,7 @@ public class BlogController {
 
 
     @GetMapping("/blogs/input")
-    public String input(Model model) {
+    public String input(Model model,HttpSession session) {
         setTypeAndTag(model);
         model.addAttribute("blog", new Blog());
         return INPUT;
@@ -105,15 +130,21 @@ public class BlogController {
         } else {
             attributes.addFlashAttribute("message", "操作成功");
         }
-        return REDIRECT_LIST;
+            return REDIRECT_LIST;
+
     }
 
 
     @GetMapping("/blogs/{id}/delete")
-    public String delete(@PathVariable Long id,RedirectAttributes attributes) {
+    public String delete(@PathVariable Long id,RedirectAttributes attributes,HttpSession session) {
         blogService.deleteBlog(id);
         attributes.addFlashAttribute("message", "删除成功");
+        if (session.getAttribute("flag").equals(2))
         return REDIRECT_LIST;
+        else
+        {
+            return "redirect:/userPost";
+        }
     }
 
 

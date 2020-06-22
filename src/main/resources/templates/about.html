@@ -226,7 +226,8 @@
             <a href="#" th:href="@{/admin/logout}"  class="ui circular icon button"  data-position="bottom center"><i class="icon setting"></i>注销</a>
             <a href="#" th:href="@{/user/updatepassword/{id} (id=${session.user.getId()})}"  class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>改密</a>
             <a href="#" th:href="@{/user/userinfo/{id} (id=${session.user.getId()}) }" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>信息</a>
-            <a href="#" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>帖子</a>
+<!--            0.传入  -->
+            <a href="#" th:href="@{/admin/user/blogs/{id} (id=${session.user.getId()})}" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>帖子</a>
 
 
 

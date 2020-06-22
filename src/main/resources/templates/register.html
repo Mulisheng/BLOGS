@@ -125,7 +125,7 @@
 
                     <div class="ui error mini message"></div>
                     <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
-
+                    </div>
                 </form>
 
             </div>
@@ -139,6 +139,17 @@
 <!--/*/</th:block>/*/-->
 
 <script>
+    var myemail = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
+
+    function isEmailAvailable(str) {
+        if (!myemail.test(str)) {
+            layer.msg('邮箱不合法');
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     $('.ui.form').form({
         fields : {
             username : {
@@ -165,7 +176,7 @@
             email : {
                 identifier: 'email',
                 rules: [{
-                    type : 'empty',
+                    type : 'email',
                     prompt: 'Email'
                 }]
             }

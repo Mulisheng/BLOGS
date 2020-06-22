@@ -1,10 +1,13 @@
 package com.lrm.web;
 
+import com.lrm.dao.BlogRepository;
+import com.lrm.po.Blog;
 import com.lrm.po.Tag;
 import com.lrm.service.BlogService;
 import com.lrm.service.TagService;
 import com.lrm.vo.BlogQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -19,6 +22,8 @@ import java.util.List;
 @Controller
 public class TagShowController {
 
+    BlogRepository repository;
+
     @Autowired
     private TagService tagService;
 
@@ -27,13 +32,15 @@ public class TagShowController {
 
     @GetMapping("/tags/{id}")
     public String tags(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
-                        @PathVariable Long id, Model model) {
+                        @PathVariable Long id, Model model,BlogQuery blog) {
+        System.out.println("tag gg");
         List<Tag> tags = tagService.listTagTop(10000);
         if (id == -1) {
            id = tags.get(0).getId();
         }
         model.addAttribute("tags", tags);
-        model.addAttribute("page", blogService.listBlog(id,pageable));
+
+        model.addAttribute("page", blogService.listBlog(pageable,blog));
         model.addAttribute("activeTagId", id);
         return "tags";
     }

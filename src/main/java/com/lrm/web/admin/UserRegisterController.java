@@ -65,6 +65,7 @@ public class UserRegisterController {
     private UserRepository userRepository;
     @GetMapping("/res")
     public String userRegister(){
+        System.out.println("register en");
         return "register";
     }
     @GetMapping("/userlogout")
@@ -77,6 +78,9 @@ public class UserRegisterController {
     public static String reversel1(String str){
         return new StringBuffer(str).reverse().toString();
     }
+
+
+
 
     @PostMapping("/register")
     public String register(User user, RedirectAttributes attributes, /*@RequestParam(name = "file")MultipartFile file,*/ Model model) throws Exception {
@@ -92,7 +96,8 @@ public class UserRegisterController {
             return "redirect:/user/res";
         }
 
-
+        userRepository.findUserByUsername(user.getUsername());
+        System.out.println("pass");
         if (userRepository.findUserByUsername(user.getUsername()) != null)
         {
             attributes.addFlashAttribute("message", "用户名已存在");

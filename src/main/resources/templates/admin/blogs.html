@@ -101,7 +101,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr th:each="blog,iterStat : ${page.content}">
+          <tr th:if="${session.user.getId()}==${blog.user.id}" th:each="blog,iterStat : ${page.content}">
             <td th:text="${iterStat.count}">1</td>
             <td th:text="${blog.title}">刻意练习清单</td>
             <td th:text="${blog.type.name}">认知升级</td>
