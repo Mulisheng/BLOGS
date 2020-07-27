@@ -143,6 +143,9 @@
     </a>
 </nav>
 
+
+<!--        显示个人信息           -->
+
 <div  class="m-container m-padded-tb-big animated fadeIn">
     <div class="ui container">
 
@@ -151,8 +154,8 @@
                 <div class="ui segment">
                     <div class="Content-Main">
                         <!--    <form  action="" method="post" class="form-userInfo" th:action="@{/user/useredit/{id} (id=${session.user.getId()})}" enctype="multipart/form-data">-->
-                        <h1>个人信息</h1>
-                        <span class="text1">请在文本框中完善您的个人信息：</span>
+                        <h1>他的信息</h1>
+
 
                         <div>
 
@@ -160,51 +163,148 @@
                         </div>
                         <label>
                             <span>username :</span>
-                            <input type="text"  name="username" placeholder="Your Full Name" th:value="${session.otherUser.getUsername()}">
+                            <input type="text" disabled="disabled" name="username" placeholder="Your Full Name" th:value="${session.otherUser.getUsername()}">
                         </label>
 
                         <label>
                             <span>nickname :</span>
-                            <input type="text"  name="nickname" placeholder="Your Full Name" th:value="${session.otherUser.getNickname()}">
+                            <input type="text"  disabled="disabled" name="nickname" placeholder="Your Full Name" th:value="${session.otherUser.getNickname()}">
                         </label>
                         <label>
                             <span>email :</span>
-                            <input type="email" name="email" placeholder="@.com" th:value="${session.otherUser.getEmail()}">
+                            <input type="email" disabled="disabled" name="email" placeholder="@.com" th:value="${session.otherUser.getEmail()}">
                         </label>
-                    </div>        </div>
+                    </div>
+
+
+                                 <!--        显示个人帖子模块            -->
+                    <div  class="m-container-small m-padded-tb-big">
+                        <div class="ui container">
+                            <!--        <div  class="ui secondary segment form">-->
+                            <!--        <input type="text" name="userid" >-->
+                            <input type="hidden" name="page" >
+
+                            <!--            <div class="inline fields">-->
+                            <!--                <div class="field">-->
+                            <!--                    <input type="text" name="title" placeholder="标题">-->
+                            <!--                </div>-->
+                            <!--                <div class="field">-->
+                            <!--                    <div class="ui labeled action input">-->
+                            <!--                        <div class="ui type selection dropdown">-->
+                            <!--                            <input type="hidden" name="typeId">-->
+                            <!--                            <i class="dropdown icon"></i>-->
+                            <!--                            <div class="default text">分类</div>-->
+                            <!--                            <div class="menu">-->
+                            <!--                                <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}">错误日志</div>-->
+                            <!--                                &lt;!&ndash;/*&ndash;&gt;-->
+                            <!--                                <div class="item" data-value="2">开发者手册</div>-->
+                            <!--                                &lt;!&ndash;*/&ndash;&gt;-->
+                            <!--                            </div>-->
+                            <!--                        </div>-->
+                            <!--                        <button id="clear-btn" class="ui compact button">clear</button>-->
+                            <!--                    </div>-->
+
+                            <!--                </div>-->
+                            <!--                <div class="field">-->
+                            <!--                    <div class="ui checkbox">-->
+                            <!--                        <input type="checkbox" id="recommend" name="recommend">-->
+                            <!--                        <label for="recommend">推荐</label>-->
+                            <!--                    </div>-->
+                            <!--                </div>-->
+                            <!--                <div class="field">-->
+                            <!--                    <button  type="button" id="search-btn" class="ui mini teal basic button"><i class="search icon"></i>搜索</button>-->
+                            <!--                </div>-->
+                            <!--            </div>-->
+                            <!--        </div>-->
+                            <div id="table-container">
+                                <table th:fragment="xmanList" class="ui compact teal table">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>标题</th>
+                                        <th>类型</th>
+                                        <th>推荐</th>
+                                        <th>状态</th>
+                                        <th>更新时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr  th:each="blog,iterStat : ${page.content}">
+                                        <td th:text="${iterStat.count}">1</td>
+                                        <td ><a th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}"></a></td>
+                                        <td th:text="${blog.type.name}">认知升级</td>
+                                        <td th:text="${blog.recommend} ? '是':'否'">是</td>
+                                        <td th:text="${blog.published} ? '发布':'草稿'">草稿</td>
+                                        <td th:text="${blog.updateTime}">2017-10-02 09:45</td>
+                                        <td>
+                                            <!--              <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>-->
+                                            <!--              <a href="#" th:href="@{/admin/blogs/{id}/delete2(id=${blog.id})}" class="ui mini red basic button">屏蔽</a>-->
+                                            <!--                        <a href="#" th:href="@{/admin/blogs/{id}/delete2(id=${blog.id})}" class="ui mini red basic button"  th:unless="${blog.visual==false}" >屏蔽</a>-->
+                                            <!--                        <a href="#" th:href="@{/admin/blogs/{id}/delete2(id=${blog.id})}" class="ui mini red basic button"  th:unless="${blog.visual==true}" >解除屏蔽</a>-->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th colspan="7">
+                                            <div class="ui mini pagination menu" th:if="${page.totalPages}>1" >
+                                                <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
+                                                <a onclick="page(this)" th:attr="data-page=${page.number}+1" class=" item" th:unless="${page.last}" >下一页</a>
+                                            </div>
+                                            <!--              <a href="#" th:href="@{/admin/blogs/input}" class="ui mini right floated teal basic button">新增</a>-->
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+
+                                <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                                    <i class="close icon"></i>
+                                    <div class="header">提示：</div>
+                                    <p th:text="${message}">恭喜，操作成功！</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+
+
+
+            <!--        显示个右边小信息模块           -->
             <div class="five wide column">
                 <div class="ui top attached segment">
-                    <div class="ui header">关于我</div>
+                    <div class="ui header">论坛</div>
                 </div>
                 <div class="ui attached segment">
-                    <p class="m-text">keep on going never give up</p>
-                    <p class="m-text">考研团队</p>
-                    <p class="m-text">考研不放弃</p>
+                    <p class="m-text">影视论坛</p>
+                    <p class="m-text">交流</p>
+                    <p class="m-text">最新电影</p>
                 </div>
                 <div class="ui attached segment">
-                    <div class="ui orange basic left pointing label">编程</div>
-                    <div class="ui orange basic left pointing label">学习</div>
-                    <div class="ui orange basic left pointing label">音乐</div>
-                    <div class="ui orange basic left pointing label">运动</div>
+                    <div class="ui orange basic left pointing label">最</div>
+                    <div class="ui orange basic left pointing label">新</div>
+                    <div class="ui orange basic left pointing label">电</div>
+                    <div class="ui orange basic left pointing label">影</div>
                 </div>
                 <div class="ui attached segment">
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">Java</div>
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">JavaScript</div>
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">JSP</div>
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">C++</div>
-                    <div class="ui teal basic left pointing label m-margin-tb-tiny">MYSQL</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">使用人数多</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">内容丰富</div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">万千文人雅士</div>
                     <div class="ui teal basic left pointing label m-margin-tb-tiny">...</div>
                 </div>
                 <div class="ui bottom attached segment">
                     <!--            <a href="#" class="ui circular icon button"><i class="github icon"></i></a>-->
                     <!--            <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>-->
                     <!--            <a href="#" class="ui qq circular icon button" data-content="734503844" data-position="bottom center"><i class="qq icon"></i></a>-->
-                    <a href="#" th:if="${session.flag!=0}" th:href="@{/admin/logout}"  class="ui circular icon button"  data-position="bottom center"><i class="icon setting"></i>注销</a>
-                    <a href="#" th:if="${session.flag!=0}" th:href="@{/user/updatepassword/{id} (id=${session.user.getId()})}"  class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>改密</a>
-                    <a href="#" th:if="${session.flag!=0}" th:href="@{/user/userinfo/{id} (id=${session.user.getId()}) }" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>信息</a>
+                    <a href="#" th:if="${session.flag!=0 && session.otherUser.getId()!=session.user.getId() && followingStatus==false}" th:href="@{/user/following/{id} (id=${session.otherUser.getId()})}"  class="ui circular icon button"  data-position="bottom center"><i class="icon setting"></i>关注</a>
+                    <a href="#" th:if="${session.flag!=0 && session.otherUser.getId()!=session.user.getId()&& followingStatus==true}" th:href="@{/user/deleteFollowing/{id} (id=${session.otherUser.getId()})}"  class="ui circular icon button"  data-position="bottom center"><i class="icon setting"></i>取消关注</a>
 
-
+                    <!--                    <a href="#" th:if="${session.flag!=0}" th:href="@{/user/updatepassword/{id} (id=${session.user.getId()})}"  class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>他的帖子</a>-->
+<!--                    <a href="#" th:if="${session.flag!=0}" th:href="@{/user/userinfo/{id} (id=${session.user.getId()}) }" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>信息</a>-->
 
                 </div>
 
@@ -213,21 +313,13 @@
                 </div>
 
             </div>
+
+
         </div>
 
     </div>
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -280,6 +372,52 @@
 
 
 </th:block>
+
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+        on : 'hover'
+    });
+
+    //消息提示关闭初始化
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+
+    $('#clear-btn')
+        .on('click', function() {
+            $('.ui.type.dropdown')
+                .dropdown('clear')
+            ;
+        })
+    ;
+
+    function page(obj) {
+        $("[name='page']").val($(obj).data("page"));
+        loaddata();
+    }
+
+    $("#search-btn").click(function () {
+        $("[name='page']").val(0);
+        loaddata();
+    });
+    function loaddata() {
+        $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/user/xmanBlogs",{
+            // title : $("[name='title']").val(),
+            // typeId : $("[name='typeId']").val(),
+            // recommend : $("[name='recommend']").prop('checked'),
+            page : $("[name='page']").val()
+        });
+    }
+
+</script>
 
 
 </body>

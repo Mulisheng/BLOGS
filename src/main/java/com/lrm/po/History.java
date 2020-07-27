@@ -14,7 +14,11 @@ public class History {
     @GeneratedValue
     private Long id;
 
+    private String blogname;
+
     private Long blogid;
+
+    private  String title;
 
     private  Long userid;
 
@@ -42,11 +46,30 @@ public class History {
         this.userid = userid;
     }
 
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBlogname() {
+        return blogname;
+    }
+
+    public void setBlogname(String blogname) {
+        this.blogname = blogname;
+    }
+
     @Override
     public String toString() {
         return "History{" +
                 "id=" + id +
+                ", blogname='" + blogname + '\'' +
                 ", blogid=" + blogid +
+                ", title='" + title + '\'' +
                 ", userid=" + userid +
                 '}';
     }

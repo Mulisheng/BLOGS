@@ -156,6 +156,7 @@
 
                   <img align="center" class="ui medium circular mini image" th:src="@{'/images/'+${session.user.getAvatar()}}"/>
                   <!--            <img src="../../static/images/avatar.png">-->
+<!--                  <p th:text="${session.user.getAvatar()}">-->
                 </div>
                 <label>
                   <span>更改头像 :</span>
@@ -225,10 +226,14 @@
 <!--            <a href="#" class="ui qq circular icon button" data-content="734503844" data-position="bottom center"><i class="qq icon"></i></a>-->
             <a href="#" th:href="@{/admin/logout}"  class="ui circular icon button"  data-position="bottom center"><i class="icon setting"></i>注销</a>
             <a href="#" th:href="@{/user/updatepassword/{id} (id=${session.user.getId()})}"  class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>改密</a>
-            <a href="#" th:href="@{/user/userinfo/{id} (id=${session.user.getId()}) }" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>信息</a>
+<!--            <a href="#" th:href="@{/user/userinfo/{id} (id=${session.user.getId()}) }" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>信息</a>-->
 <!--            0.传入  -->
-            <a href="#" th:href="@{/admin/user/blogs/{id} (id=${session.user.getId()})}" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>帖子</a>
+            <a href="#" th:href="@{/about}" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>信息</a>
 
+            <a href="#" th:href="@{/admin/user/blogs/{id} (id=${session.user.getId()})}" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>帖子</a>
+            <a href="#" th:href="@{/collection/{id} (id=${session.user.getId()})}" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>收藏</a>
+            <a href="#" th:href="@{/user/listFollow/{id} (id=${session.user.getId()})}" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>关注</a>
+            <a href="#" th:href="@{/personalhistory}" class="circular ui icon button"  data-position="bottom center"><i class="icon setting"></i>足迹</a>
 
 
 

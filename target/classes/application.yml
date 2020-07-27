@@ -5,6 +5,16 @@ spring:
     active: dev
   messages:
     basename: i18n/messages
+  mail:
+    username: 1119322361@qq.com
+    host: smtp.qq.com
+    password: glyukkaxmvsmfiej
+    protocol: smtp
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
 
-comment.avatar: /images/avatar.png
-file.path: F:\BLOGS\2020-6-17-final\2020-6-17-final\BLOGS\src\main\resources\static\images\
+
+
+#comment.avatar: /images/avatar.png
+file.path: F:\BLOGS\7-2-ｍｏｒｎｉｎｇ＇\BLOGS\src\main\resources\static\images\

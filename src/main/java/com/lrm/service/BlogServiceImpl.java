@@ -3,7 +3,9 @@ package com.lrm.service;
 import com.lrm.NotFoundException;
 import com.lrm.dao.BlogRepository;
 import com.lrm.po.Blog;
+import com.lrm.po.Tag;
 import com.lrm.po.Type;
+import com.lrm.po.User;
 import com.lrm.util.MarkdownUtils;
 import com.lrm.util.MyBeanUtils;
 import com.lrm.vo.BlogQuery;
@@ -18,12 +20,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.*;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 
 @Service
 public class BlogServiceImpl implements BlogService {
 
+    @Autowired
+    private HttpSession session;
 
     @Autowired
     private BlogRepository blogRepository;
@@ -60,6 +65,7 @@ public class BlogServiceImpl implements BlogService {
                 if (blog.isRecommend()) {
                     predicates.add(cb.equal(root.<Boolean>get("recommend"), blog.isRecommend()));
                 }
+                predicates.add(cb.notEqual(root.<Boolean>get("visual"),false));
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;
             }
@@ -82,11 +88,115 @@ public class BlogServiceImpl implements BlogService {
                 if (blog.isRecommend()) {
                     predicates.add(cb.equal(root.<Boolean>get("recommend"), blog.isRecommend()));
                 }
+
+
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;
             }
         },pageable);
     }
+
+
+    @Override
+    public Page<Blog> listBlog3(Pageable pageable, BlogQuery blog, Long id) {
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                List<Predicate> predicates = new ArrayList<>();
+                if (!"".equals(blog.getTitle()) && blog.getTitle() != null) {
+                    predicates.add(cb.like(root.<String>get("title"), "%"+blog.getTitle()+"%"));
+                }
+                if (blog.getTypeId() != null) {
+                    predicates.add(cb.equal(root.<Type>get("type").get("id"), blog.getTypeId()));
+                }
+                if (blog.isRecommend()) {
+                    predicates.add(cb.equal(root.<Boolean>get("recommend"), blog.isRecommend()));
+                }
+                predicates.add(cb.equal(root.<User>get("user").get("id"),id));
+                predicates.add(cb.equal(root.<Boolean>get("visual"),1));
+                cq.where(predicates.toArray(new Predicate[predicates.size()]));
+                return null;
+            }
+        },pageable);
+    }
+
+    @Override
+    public Page<Blog> listPost(Pageable pageable, Long userid) {
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                List<Predicate> predicates=new ArrayList<>();
+                predicates.add(cb.equal(root.<User>get("user").get("id"),userid));
+                predicates.add(cb.equal(root.<Boolean>get("visual"),1));
+                cq.where(predicates.toArray(new Predicate[predicates.size()]));
+
+                return null;
+            }
+        },pageable);
+    }
+
+    @Override
+    public Page<Blog> tagBlogList(Pageable pageable, Blog blog, Long id) {
+
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                List<Predicate> predicates=new ArrayList<>();
+                predicates.add(cb.equal(root.<Type>get("type").get("id"),id));
+                predicates.add(cb.notEqual(root.<Boolean>get("visual"),false));
+                cq.where(predicates.toArray(new Predicate[predicates.size()]));
+
+                return null;
+            }
+        },pageable);
+
+    }
+
+    @Override
+    public Page<Blog> typeBlogList(Pageable pageable, Long id) {
+
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                List<Predicate> predicates=new ArrayList<>();
+                predicates.add(cb.equal(root.<Type>get("type").get("id"),id));
+                predicates.add(cb.notEqual(root.<Boolean>get("visual"),false));
+                cq.where(predicates.toArray(new Predicate[predicates.size()]));
+                return null;
+            }
+        },pageable);
+
+    }
+
+    @Override
+    public Page<Blog> idexTagBlogList(Pageable pageable, Long tagsId) {
+
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                List<Predicate> predicates=new ArrayList<>();
+                Join join = root.join("tags");
+                predicates.add(cb.equal(join.get("id"),tagsId));
+                predicates.add(cb.notEqual(root.<Boolean>get("visual"),false));
+                cq.where(predicates.toArray(new Predicate[predicates.size()]));
+                return null;
+            }
+        },pageable);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
@@ -103,6 +213,12 @@ public class BlogServiceImpl implements BlogService {
             }
         },pageable);
     }
+
+
+
+
+
+
 
     @Override
     public Page<Blog> listBlog(String query, Pageable pageable) {

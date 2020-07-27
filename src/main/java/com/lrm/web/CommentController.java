@@ -24,8 +24,8 @@ public class CommentController {
     @Autowired
     private BlogService blogService;
 
-    @Value("${comment.avatar}")
-    private String avatar;
+//    @Value("${comment.avatar}")
+//    private String avatar;
 
     @GetMapping("/comments/{blogId}")
     public String comments(@PathVariable Long blogId, Model model) {
@@ -43,9 +43,13 @@ public class CommentController {
             comment.setAvatar(user.getAvatar());
             comment.setAdminComment(true);
         } else {
-            comment.setAvatar(avatar);
+//            comment.setAvatar(avatar);
         }
-        commentService.saveComment(comment);
+        User user1=(User)session.getAttribute("user");
+//        comment.setUser_id(user.getId());
+        comment.setUser(user1);
+        comment.setUid(user1.getId());
+        commentService.saveComment(comment,session);
         return "redirect:/comments/" + blogId;
     }
 

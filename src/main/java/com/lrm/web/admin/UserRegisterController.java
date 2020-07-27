@@ -60,7 +60,6 @@ public class UserRegisterController {
         return srevers;
     }
 
-
     @Autowired
     private UserRepository userRepository;
     @GetMapping("/res")
@@ -96,12 +95,17 @@ public class UserRegisterController {
             return "redirect:/user/res";
         }
 
+        User user1=userRepository.findUserByEmail(user.getEmail());
+        if(userRepository.findUserByEmail(user.getEmail())!=null){
+            attributes.addFlashAttribute("message", "邮箱已被注册相同");
+            return "redirect:/user/res";
+        }
         userRepository.findUserByUsername(user.getUsername());
-        System.out.println("pass");
+//        System.out.println("pass");
         if (userRepository.findUserByUsername(user.getUsername()) != null)
         {
             attributes.addFlashAttribute("message", "用户名已存在");
-            System.out.println("用户名已存在"+user.getUsername());
+//            System.out.println("用户名已存在"+user.getUsername());
 
             return "redirect:/user/res";
 
@@ -116,6 +120,8 @@ public class UserRegisterController {
             user.setAvatar(fileName);
             user.setCreateTime(date);
             user.setType(2);
+            Long status=new Long(1);
+            user.setStatus(status);
             userRepository.save(user);
             attributes.addFlashAttribute("message", "注册成功，请登录");
             return "redirect:/user";

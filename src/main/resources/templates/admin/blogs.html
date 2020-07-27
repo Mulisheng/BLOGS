@@ -101,16 +101,18 @@
           </tr>
           </thead>
           <tbody>
-          <tr th:if="${session.user.getId()}==${blog.user.id}" th:each="blog,iterStat : ${page.content}">
+          <tr  th:each="blog,iterStat : ${page.content}">
             <td th:text="${iterStat.count}">1</td>
-            <td th:text="${blog.title}">刻意练习清单</td>
+            <td ><a th:href="@{/blog/{id}(id=${blog.id})}" th:text="${blog.title}"></a></td>
             <td th:text="${blog.type.name}">认知升级</td>
             <td th:text="${blog.recommend} ? '是':'否'">是</td>
             <td th:text="${blog.published} ? '发布':'草稿'">草稿</td>
             <td th:text="${blog.updateTime}">2017-10-02 09:45</td>
             <td>
-              <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
-              <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">删除</a>
+<!--              <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>-->
+<!--              <a href="#" th:href="@{/admin/blogs/{id}/delete2(id=${blog.id})}" class="ui mini red basic button">屏蔽</a>-->
+              <a href="#" th:href="@{/admin/blogs/{id}/delete2(id=${blog.id})}" class="ui mini red basic button"  th:unless="${blog.visual==false}" >屏蔽</a>
+              <a href="#" th:href="@{/admin/blogs/{id}/delete2(id=${blog.id})}" class="ui mini red basic button"  th:unless="${blog.visual==true}" >解除屏蔽</a>
             </td>
           </tr>
           </tbody>
@@ -119,9 +121,9 @@
             <th colspan="7">
               <div class="ui mini pagination menu" th:if="${page.totalPages}>1" >
                 <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
-                <a onclick="page(this)" th:attr="data-page=${page.number}+1" class=" item" th:unless="${page.last}">下一页</a>
+                <a onclick="page(this)" th:attr="data-page=${page.number}+1" class=" item" th:unless="${page.last}" >下一页</a>
               </div>
-              <a href="#" th:href="@{/admin/blogs/input}" class="ui mini right floated teal basic button">新增</a>
+<!--              <a href="#" th:href="@{/admin/blogs/input}" class="ui mini right floated teal basic button">新增</a>-->
             </th>
           </tr>
           </tfoot>

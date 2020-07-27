@@ -2,16 +2,12 @@ package com.lrm.vo;
 
 
 public class BlogQuery {
-
-
     private String title;
     private Long typeId;
     private boolean recommend;
 
     public BlogQuery() {
     }
-
-
 
     public String getTitle() {
         return title;

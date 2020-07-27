@@ -54,6 +54,8 @@
         </div>
       </div>
 
+      <div id="table-container">
+
       <div class="ui top attached teal segment">
         <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
           <div class="ui middle aligned mobile reversed stackable grid" >
@@ -105,6 +107,7 @@
 
     </div>
   </div>
+  </div>
 
   <br>
   <br>
@@ -153,6 +156,25 @@
     $('.menu.toggle').click(function () {
       $('.m-item').toggleClass('m-mobile-hide');
     });
+
+    function page(obj) {
+      $("[name='page']").val($(obj).data("page"));
+      loaddata();
+    }
+
+    $("#search-btn").click(function () {
+      $("[name='page']").val(0);
+      loaddata();
+    });
+    function loaddata() {
+      $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
+      //  title : $("[name='title']").val(),
+      //  typeId : $("[name='typeId']").val(),
+      //  recommend : $("[name='recommend']").prop('checked'),
+        page : $("[name='page']").val()
+      });
+    }
+
 
   </script>
 </body>

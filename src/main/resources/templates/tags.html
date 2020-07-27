@@ -48,13 +48,13 @@
       </div>
 
       <div class="ui attached segment m-padded-tb-large">
-        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"  class="ui basic left pointing large label m-margin-tb-tiny" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${tags}">
+        <a href="#" th:href="@{/tagsBlogList/{id}(id=${tag.id})}"  class="ui basic left pointing large label m-margin-tb-tiny" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${tags}">
           <span th:text="${tag.name}">方法论</span> <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
         </a>
       </div>
 
       <div class="ui top attached teal segment">
-        <div class="ui padded vertical segment m-padded-tb-large"  th:each="blog : ${page.content}">
+        <div class="ui padded vertical segment m-padded-tb-large" th:if="${blog.visual==true}" th:each="blog : ${page.content}">
           <div class="ui middle aligned mobile reversed stackable grid" >
             <div class="eleven wide column">
               <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗?</a></h3>
@@ -65,7 +65,7 @@
                     <div class="ui mini horizontal link list">
                       <div class="item">
 <!--                        <img src="https://unsplash.it/100/100?image=1005" th:src="@{'/images/'+${session.user.getAvatar()}}" alt="" class="ui avatar image">-->
-                        <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}" >李仁密</a></div>
+                        <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}" >木璃笙</a></div>
                       </div>
                       <div class="item">
                         <i class="calendar icon"></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2017-10-01</span>
@@ -89,7 +89,7 @@
 
             <div class="five wide column">
               <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
-                <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}"  alt="" class="ui rounded image">
+                <img src="https://unsplash.it/800/450?image=1005" th:src="@{'/images/'+${blog.firstPicture}}"  alt="" class="ui rounded image">
               </a>
             </div>
 

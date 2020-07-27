@@ -1,9 +1,6 @@
 package com.lrm.po;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "t_biao")
@@ -15,6 +12,12 @@ public class Biao {
     private Long blogid;
     private String url;
     private String type;
+    private boolean status=false;
+    @ManyToOne()
+    private User user;
+
+    @ManyToOne()
+    private Blog blog;
 
     public Long getId() {
         return id;
@@ -23,7 +26,6 @@ public class Biao {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getDct() {
         return dct;
@@ -57,6 +59,30 @@ public class Biao {
         this.type = type;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
+
     @Override
     public String toString() {
         return "Biao{" +
@@ -65,6 +91,7 @@ public class Biao {
                 ", blogid=" + blogid +
                 ", url='" + url + '\'' +
                 ", type='" + type + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

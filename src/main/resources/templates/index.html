@@ -16,8 +16,8 @@
       <div class="ui inverted secondary stackable menu">
         <h2 class="ui teal header item">Blog</h2>
         <a href="#" class=" m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>年份</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>类别</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
         <div class="right m-item item m-mobile-hide">
@@ -59,7 +59,7 @@
           <!--content-->
           <div class="ui attached  segment">
 
-            <div class="ui padded vertical segment m-padded-tb-large" th:each="blog : ${page.content}">
+            <div class="ui padded vertical segment m-padded-tb-large"  th:if="${blog.visual}" th:each="blog : ${page.content}">
               <div class="ui middle aligned mobile reversed stackable grid" >
                 <div class="eleven wide column">
                   <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗?</a></h3>
@@ -425,7 +425,7 @@
             <div class="ui secondary segment">
               <div class="ui two column grid">
                 <div class="column">
-                  <i class="idea icon"></i>分类
+                  <i class="idea icon"></i>年份
                 </div>
                 <div class="right aligned column">
                   <a href="#" th:href="@{types/-1}" target="_blank">more <i class="angle double right icon"></i></a>
@@ -469,7 +469,7 @@
             <div class="ui secondary segment">
               <div class="ui two column grid">
                 <div class="column">
-                  <i class="tags icon"></i>标签
+                  <i class="tags icon"></i>类别
                 </div>
                 <div class="right aligned column">
                   <a href="#" th:href="@{tags/-1}" target="_blank">more <i class="angle double right icon"></i></a>

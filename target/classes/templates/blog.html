@@ -51,19 +51,21 @@
           <div class="item">
             <i class="eye icon"></i> <span th:text="${blog.views}">2342</span>
           </div>
+
           <div class="item">
             <form method="post"action="#" th:action="@{/dct/dct1/{id} (id=${blog.getId()}) }">
-            <button id="reportButton" class="ui gray basic button">举报</button>
+            <button id="reportButton" class="ui gray basic button"  th:if="${session.flag!=0 }"  th:value="举报" >举报</button>
 <!--              <p th:name="url" type="hidden" th:value="${#httpServletRequest.getRequestURI().toString()}"></p>-->
             </form>
           </div>
 
           <div class="item">
             <form method="post"action="#" th:action="@{/collect/add/{userid}/{blogid}/{title} (userid=${session.user.getId()},blogid=${blog.getId()},title=${blog.getTitle()}) }">
-              <button class="ui button"  th:if="${collect}==0" th:value="已收藏">收藏</button>
+              <button class="ui button"  th:if="${collect!=0 && session.user.getId()!=blog.user.getId()}" th:value="收藏">收藏</button>
               <!--              <p th:name="url" type="hidden" th:value="${#httpServletRequest.getRequestURI().toString()}"></p>-->
             </form>
           </div>
+
 
 
 
@@ -72,7 +74,7 @@
       </div>
       <div class="ui attached segment">
         <!--图片区域-->
-        <img src="https://unsplash.it/800/450?image=1005" th:src="@{${blog.firstPicture}}" alt="" class="ui fluid rounded image">
+        <img src="https://unsplash.it/800/450?image=1005" th:src="@{'/images/'+${blog.getFirstPicture()}}" height="100" width="100"  class="ui fluid rounded image">
       </div>
       <div class="ui  attached padded segment">
         内容
@@ -445,7 +447,11 @@ h5,h6{font-size:1em;}
           <h5 id="appendix2">2、开源许可</h5>
 
         </div>
-
+        <div class="m-padded-lr-responsive">
+        <div class="ui basic teal left pointing label">
+           <span th:text="${blog.type.getName()}">2342</span>
+        </div>
+        </div>
         <!--标签-->
         <div class="m-padded-lr-responsive">
           <div class="ui basic teal left pointing label" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</div>
@@ -490,19 +496,27 @@ h5,h6{font-size:1em;}
         </div>
       </div>
       <div  class="ui bottom attached segment" th:if="${blog.commentabled}">
+        <!--*********************************************下*******************************************/-->
+
         <!--留言区域列表-->
         <div id="comment-container"  class="ui teal segment">
           <div th:fragment="commentList">
             <div class="ui threaded comments" style="max-width: 100%;">
               <h3 class="ui dividing header">评论</h3>
+<!--              根评论-->
               <div class="comment" th:each="comment : ${comments}">
                 <a class="avatar">
-                  <img src="https://unsplash.it/100/100?image=1005" th:src="@{${comment.avatar}}">
+<!--                  <img src="https://unsplash.it/100/100?image=1005" th:src="@{${comment.avatar}}">-->
+                  <img   class="ui avatar image" src="https://unsplash.it/100/100?image=1005" th:src="@{'/images/'+${comment.avatar}}">
+<!--                  <p th:text="${comment.avatar}"></p>-->
+
                 </a>
                 <div class="content">
                   <a class="author" >
                     <span th:text="${comment.nickname}">Matt</span>
-                    <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${comment.adminComment}">博主</div>
+<!--                    <div class="ui mini basic teal left pointing label m-padded-mini" >博主</div>-->
+<!--                    <p th:value="${blog.user.id}"></p>-->
+<!--                    <p text=${session.user.getId()}></p> -->
                   </a>
                   <div class="metadata">
                     <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
@@ -517,12 +531,14 @@ h5,h6{font-size:1em;}
                 <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
                   <div class="comment" th:each="reply : ${comment.replyComments}">
                     <a class="avatar">
-                      <img src="https://unsplash.it/100/100?image=1005" th:src="@{${reply.avatar}}">
+<!--                      <img src="https://unsplash.it/100/100?image=1005" th:src="@{${reply.avatar}}">-->
+                      <img   class="ui avatar image" src="https://unsplash.it/100/100?image=1005" th:src="@{'/images/'+${reply.avatar}}">
                     </a>
                     <div class="content">
                       <a class="author" >
                         <span th:text="${reply.nickname}">小红</span>
-                        <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${reply.adminComment}">博主</div>
+                        <div class="ui mini basic teal left pointing label m-padded-mini" ></div>
+<!--                        <p th:text="${session.blogid}">-->
                         &nbsp;<span th:text="|@ ${reply.parentComment.nickname}|" class="m-teal">@ 小白</span>
                       </a>
                       <div class="metadata">
@@ -592,7 +608,7 @@ h5,h6{font-size:1em;}
                   </div>
                 </div>
               </div>
-              <!--*/-->
+              <!--*********************************************上*******************************************/-->
 
             </div>
           </div>
@@ -607,13 +623,13 @@ h5,h6{font-size:1em;}
             <div class="field m-mobile-wide m-margin-bottom-small">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <input type="text" name="nickname" placeholder="姓名" th:value="${session.user}!=null ? ${session.user.getUsername()}: null " >
+                <input type="text" disabled="disabled" name="nickname" placeholder="姓名" th:value="${session.user}!=null ? ${session.user.getUsername()}: null " >
               </div>
             </div>
             <div class="field m-mobile-wide m-margin-bottom-small">
               <div class="ui left icon input">
                 <i class="mail icon"></i>
-                <input type="text" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.getEmail()}:null ">
+                <input type="text" disabled="disabled" name="email" placeholder="邮箱" th:value="${session.user}!=null ? ${session.user.getEmail()}:null ">
               </div>
             </div>
             <div class="field  m-margin-bottom-small m-mobile-wide">
@@ -799,7 +815,7 @@ h5,h6{font-size:1em;}
         console.log('校验成功');
         if(v1){
           postData();
-          alert("成功")
+          // alert("成功")
         }
         else
         alert("请先登录，后评论");
@@ -810,10 +826,11 @@ h5,h6{font-size:1em;}
     });
     
     function postData() {
-      $("#comment-container").load(/*[[@{/comments}]]*/"",{
+      $("#comment-container").load(/*[[@{/comments}]]*/"/commentadmin",{
         "parentComment.id" : $("[name='parentComment.id']").val(),
         "blog.id" : $("[name='blog.id']").val(),
         "nickname": $("[name='nickname']").val(),
+        "admin_comment": true,
         "email"   : $("[name='email']").val(),
         "content" : $("[name='content']").val()
       },function (responseTxt, statusTxt, xhr) {

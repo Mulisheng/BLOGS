@@ -25,6 +25,7 @@ public class User {
     private String email;
     private String avatar;
     private Integer type;
+    private  Long status;
 
 
 
@@ -37,7 +38,24 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Blog> blogs = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Biao> biaos=new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Following> followings=new ArrayList<>();
+
     public User() {
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public Long getId() {
@@ -112,6 +130,14 @@ public class User {
         this.updateTime = updateTime;
     }
 
+    public Long getStatus() {
+        return status;
+    }
+
+
+    public void setStatus(Long status) {
+        this.status = status;
+    }
 
     public List<Blog> getBlogs() {
         return blogs;
@@ -119,6 +145,14 @@ public class User {
 
     public void setBlogs(List<Blog> blogs) {
         this.blogs = blogs;
+    }
+
+    public List<Biao> getBiaos() {
+        return biaos;
+    }
+
+    public void setBiaos(List<Biao> biaos) {
+        this.biaos = biaos;
     }
 
     @Override
@@ -131,8 +165,11 @@ public class User {
                 ", email='" + email + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", type=" + type +
+                ", status=" + status +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", blogs=" + blogs +
+                ", comments=" + comments +
                 '}';
     }
 }

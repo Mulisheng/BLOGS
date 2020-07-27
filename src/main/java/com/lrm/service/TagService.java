@@ -1,5 +1,6 @@
 package com.lrm.service;
 
+import com.lrm.po.Blog;
 import com.lrm.po.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,4 +27,6 @@ public interface TagService {
     Tag updateTag(Long id, Tag type);
 
     void deleteTag(Long id);
+
+
 }

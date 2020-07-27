@@ -17,15 +17,46 @@ public class Comment {
     private String email;
     private String content;
     private String avatar;
+    private Long uid;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
+//    private  Long user_id;
+//
+//    public Long getUser_id() {
+//        return user_id;
+//    }
+//
+//    public void setUser_id(Long user_id) {
+//        this.user_id = user_id;
+//    }
 
     @ManyToOne
     private Blog blog;
 
+    @ManyToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    public Long getUid() {
+        return uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
+    }
+
     @OneToMany(mappedBy = "parentComment")
     private List<Comment> replyComments = new ArrayList<>();
 
+    //让parentComment来管理 @OneToMany(mappedBy = "parentComment")
     @ManyToOne
     private Comment parentComment;
 
@@ -33,6 +64,7 @@ public class Comment {
 
     public Comment() {
     }
+
 
     public Long getId() {
         return id;
@@ -123,7 +155,9 @@ public class Comment {
                 ", content='" + content + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", createTime=" + createTime +
+//                ", user_id=" + user_id +
                 ", blog=" + blog +
+                ", user=" + user +
                 ", replyComments=" + replyComments +
                 ", parentComment=" + parentComment +
                 ", adminComment=" + adminComment +

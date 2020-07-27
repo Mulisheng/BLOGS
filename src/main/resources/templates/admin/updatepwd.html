@@ -9,18 +9,18 @@
 </head>
 <body>
 <!--导航-->
-<nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+<nav th:fragment="menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">航院7院Forum</h2>
+            <h2 class="ui teal header item">影视论坛</h2>
             <a href="#" th:href="@{/}" class="m-item item m-mobile-hide " th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>论坛首页</a>
             <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
             <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
-            <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>
+<!--            <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>-->
             <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="mini info icon"></i>关于我</a>
-            <a href="#" th:href="@{/user}" class="m-item item m-mobile-hide" th:classappend="${n==6} ? 'active'"><i class="mini info icon"></i>个人主页</a>
+<!--            <a href="#" th:href="@{/user}" class="m-item item m-mobile-hide" th:classappend="${n==6} ? 'active'"><i class="mini info icon"></i>个人主页</a>-->
             <a href="#" th:href="@{/admin}" class="m-item item m-mobile-hide" th:classappend="${n==7} ? 'active'"><i class="mini info icon"></i>管理员登录</a>
-            <a href="#" th:href="@{/user/res}" class="m-item item m-mobile-hide" th:classappend="${n==8} ? 'active'"><i class="mini info icon"></i>注册</a>
+            <a href="#" th:if="${session.flag==0}" th:href="@{/user/res}" class="m-item item m-mobile-hide" th:classappend="${n==8} ? 'active'"><i class="mini info icon"></i>注册</a>
             <!--      <a href="#" th:if="${session.user != null && session.flag != 0}" th:href="@{/user/userlogout}" class="m-item item m-mobile-hide" th:classappend="${n==9} ? 'active'"><i class="mini info icon"></i>注销</a>-->
 
             <div class="right m-item item m-mobile-hide">
@@ -37,7 +37,7 @@
 
                 <div class="ui dropdown  item">
                     <div class="text">
-                        <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005" th:src="@{${session.user.avatar}}">
+                        <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005" th:src="@{'/images/'+${session.user.getAvatar()}}">
                         <span th:text="${session.user.nickname}"></span>
                         <!--        </div>-->
                         <!--        <i class="dropdown icon"></i>-->
@@ -118,6 +118,16 @@
 <!--/*/</th:block>/*/-->
 
 <script>
+
+
+
+    //消息提示关闭初始化
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
     // <!--    $('.ui.form').form({-->
     // <!--        fields : {-->
     // <!--            username : {-->

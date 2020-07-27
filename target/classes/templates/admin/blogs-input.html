@@ -14,7 +14,7 @@
   <nav th:fragment="menu(8)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
-        <h2 class="ui teal header item">航院7院Forum</h2>
+        <h2 class="ui teal header item">影视论坛</h2>
         <a href="#" th:href="@{/}" class="m-item item m-mobile-hide " th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>论坛首页</a>
         <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
         <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
@@ -54,7 +54,7 @@
   <!--中间内容-->
   <div  class="m-container m-padded-tb-big">
     <div class="ui container">
-      <form id="blog-form" action="#" th:object="${blog}" th:action="@{/admin/blogs}" method="post" class="ui form">
+      <form id="blog-form" action="#" th:object="${blog}" th:action="@{/admin/blogs}" method="post" class="ui form" enctype="multipart/form-data">
         <input type="hidden" name="published" th:value="*{published}">
         <input type="hidden" name="id" th:value="*{id}">
         <div class="required field">
@@ -111,7 +111,7 @@
         <div class="required field">
           <div class="ui left labeled input">
             <label class="ui teal basic label">首图</label>
-            <input type="text" name="firstPicture" th:value="*{firstPicture}" placeholder="首图引用地址">
+            <input type="file" name="file"  placeholder="首图引用地址" accept="image/**">
           </div>
         </div>
 

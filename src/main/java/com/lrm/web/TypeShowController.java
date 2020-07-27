@@ -28,30 +28,24 @@ public class TypeShowController {
     private BlogService blogService;
 
     @GetMapping("/types/{id}")
-    public String types(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
-                        @PathVariable Long id, Model model) {
+    public String types(@PageableDefault(size = 5, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
+                        @PathVariable Long id, Model model,Blog blog) {
         System.out.println("gg");
         List<Type> types = typeService.listTypeTop(10000);
         if (id == -1) {
+            if(types.size()!=0)
            id = types.get(0).getId();
         }
         BlogQuery blogQuery = new BlogQuery();
         blogQuery.setTypeId(id);
-
-
-        Page<Blog> b=blogService.listBlog2(pageable,blogQuery);
-        System.out.println("++++++Blog:");
-        for (Blog bb:b
-        ) {
-            System.out.println(bb);
-        }
-
-
-
+        System.out.println("id"+id);
 
         model.addAttribute("types", types);
-        model.addAttribute("page", blogService.listBlog2(pageable, blogQuery));
+        model.addAttribute("page", blogService.typeBlogList(pageable, id));
         model.addAttribute("activeTypeId", id);
         return "types";
     }
+
+
+
 }

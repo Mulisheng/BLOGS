@@ -1,74 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="036a1e82-4a7b-475c-b371-8c6c4ff31d0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/RtServiceImpl.java" afterDir="false" />
+    <list default="true" id="c2704f6c-4c0d-4abf-b312-b7737cce40fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mail_1_5_7_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_3_11_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lrm/vo/UserQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/blog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/blog-dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/blog-dev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2017-11-23.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2017-12-04.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2017-12-05.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2018-04-19.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2018-04-28.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-12.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-13.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-14.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-15.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-16.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-17.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-18.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-19.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-20.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/blog-dev.log.2020-06-21.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/dao/BiaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/dao/BiaoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/dao/BlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/dao/BlogRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/dao/TypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/dao/TypeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/dao/CollectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/dao/CollectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/dao/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/dao/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/dao/HistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/dao/HistoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/dao/TagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/dao/TagRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/dao/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/po/Biao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/po/Biao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/po/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/po/Blog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/po/Collect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/po/Collect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/po/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/po/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/po/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/po/History.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/po/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/BiaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/BiaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/BiaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/BiaoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/BlogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/BlogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/CollectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/CollectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/CollectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/CollectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/HistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/HistoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/HistoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/HistoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/TagService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/vo/BlogQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/vo/BlogQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/AboutShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/AboutShowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/DctController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/DctController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/IndexController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/TagShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/TagShowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/TypeShowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/TypeShowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/CollectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/CollectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/UserRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lrm/web/admin/UserRegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/_fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/_fragments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/_fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/_fragments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/blogs-input.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/blogs-input.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/blogs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/blogs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/tags-input.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/tags-input.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/updatepwd.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/updatepwd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/userinfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/userlogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/userlogin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/types.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/types.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/userPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/userPost.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/xman.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/xman.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/lrm/BlogApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lrm/BlogApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/blog.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/dao/BiaoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/dao/BiaoRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/dao/BlogRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/dao/BlogRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/dao/CollectRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/dao/CollectRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/dao/CommentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/dao/CommentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/dao/HistoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/dao/HistoryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/dao/TagRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/dao/TagRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/dao/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/dao/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/po/Biao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/po/Biao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/po/Blog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/po/Blog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/po/Collect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/po/Collect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/po/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/po/Comment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/po/History.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/po/History.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/po/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/po/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/BiaoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/BiaoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/BiaoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/BiaoServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogServiceImpl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogServiceImpl$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogServiceImpl$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogServiceImpl$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogServiceImpl$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/BlogServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/CollectService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/CollectService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/CollectServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/CollectServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/CommentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/CommentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/HistoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/HistoryService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/HistoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/HistoryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/service/UserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/vo/BlogQuery.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/vo/BlogQuery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/AboutShowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/AboutShowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/CommentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/DctController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/DctController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/IndexController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/TagShowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/TagShowController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/TypeShowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/TypeShowController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/BlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/BlogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/CollectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/CollectController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/UserRegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lrm/web/admin/UserRegisterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/_fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/_fragments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/_fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/_fragments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/blogs-input.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/blogs-input.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/blogs.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/blogs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/tags-input.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/tags-input.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/updatepwd.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/updatepwd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/userinfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/userlogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/userlogin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/types.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/types.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/userPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/userPost.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/xman.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/xman.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lrm/BlogApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lrm/BlogApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1dfddKQrzpGV9eEEd4KSGz5LBRe" />
+  <component name="ProjectId" id="1fBSvEeYxjDm3mVjt8LaweYtRZz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -82,10 +174,11 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
@@ -104,12 +197,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="036a1e82-4a7b-475c-b371-8c6c4ff31d0f" name="Default Changelist" comment="" />
-      <created>1592820167844</created>
+      <changelist id="c2704f6c-4c0d-4abf-b312-b7737cce40fe" name="Default Changelist" comment="" />
+      <created>1595690220766</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1592820167844</updated>
-      <workItem from="1592820171799" duration="19701000" />
+      <updated>1595690220766</updated>
+      <workItem from="1595690225320" duration="492000" />
+      <workItem from="1595850029920" duration="1830000" />
     </task>
     <servers />
   </component>
@@ -117,53 +211,41 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1592834632278">
+    <state width="1493" height="168" key="GridCell.Tab.0.bottom" timestamp="1595851133764">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1592834632278" />
-    <state width="1493" height="102" key="GridCell.Tab.0.bottom" timestamp="1592840189539">
+    <state width="1493" height="168" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595851133764" />
+    <state width="1493" height="168" key="GridCell.Tab.0.center" timestamp="1595851133764">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="102" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592840189539" />
-    <state width="1493" height="102" key="GridCell.Tab.0.center" timestamp="1592840189538">
+    <state width="1493" height="168" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595851133764" />
+    <state width="1493" height="168" key="GridCell.Tab.0.left" timestamp="1595851133764">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="102" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592840189538" />
-    <state width="1493" height="102" key="GridCell.Tab.0.left" timestamp="1592840189538">
+    <state width="1493" height="168" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595851133764" />
+    <state width="1493" height="168" key="GridCell.Tab.0.right" timestamp="1595851133764">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="102" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592840189538" />
-    <state width="1493" height="102" key="GridCell.Tab.0.right" timestamp="1592840189539">
+    <state width="1493" height="168" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595851133764" />
+    <state width="1493" height="168" key="GridCell.Tab.1.bottom" timestamp="1595851133764">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="102" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592840189539" />
-    <state width="1493" height="102" key="GridCell.Tab.1.bottom" timestamp="1592840189539">
+    <state width="1493" height="168" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595851133764" />
+    <state width="1493" height="168" key="GridCell.Tab.1.center" timestamp="1595851133764">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="102" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592840189539" />
-    <state width="1493" height="102" key="GridCell.Tab.1.center" timestamp="1592840189539">
+    <state width="1493" height="168" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1595851133764" />
+    <state width="1493" height="168" key="GridCell.Tab.1.left" timestamp="1595851133764">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="102" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1592840189539" />
-    <state width="1493" height="102" key="GridCell.Tab.1.left" timestamp="1592840189539">
+    <state width="1493" height="168" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1595851133764" />
+    <state width="1493" height="168" key="GridCell.Tab.1.right" timestamp="1595851133764">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="102" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1592840189539" />
-    <state width="1493" height="102" key="GridCell.Tab.1.right" timestamp="1592840189539">
+    <state width="1493" height="168" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1595851133764" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1595690332597">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="102" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1592840189539" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1592820325412">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592820325412" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1592832652009">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1592832652009" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1592823515736">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1592823515736" />
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1595690332597" />
   </component>
 </project>

@@ -1,5 +1,7 @@
 package com.lrm.po;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +29,8 @@ public class Blog {
     private boolean commentabled;
     private boolean published;
     private boolean recommend;
+    private  Integer   rr=0;
+    private  boolean visual=true;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
@@ -38,11 +42,10 @@ public class Blog {
     @ManyToMany(cascade = {CascadeType.PERSIST})
     private List<Tag> tags = new ArrayList<>();
 
-
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "blog")
+    @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
     @Transient
@@ -50,7 +53,21 @@ public class Blog {
 
     private String description;
 
+    @OneToMany(mappedBy = "blog")
+    private List<Biao> biaos=new ArrayList<>();
+
+    @OneToMany(mappedBy = "blog")
+    private List<Collect>collects=new ArrayList<>();
+
     public Blog() {
+    }
+
+    public boolean isVisual() {
+        return visual;
+    }
+
+    public void setVisual(boolean visual) {
+        this.visual = visual;
     }
 
     public Long getId() {
@@ -208,8 +225,32 @@ public class Blog {
         this.description = description;
     }
 
+    public List<Biao> getBiaos() {
+        return biaos;
+    }
+
+    public void setBiaos(List<Biao> biaos) {
+        this.biaos = biaos;
+    }
+
     public void init() {
         this.tagIds = tagsToIds(this.getTags());
+    }
+
+    public Integer getRr() {
+        return rr;
+    }
+
+    public void setRr(Integer rr) {
+        this.rr = rr;
+    }
+
+    public List<Collect> getCollects() {
+        return collects;
+    }
+
+    public void setCollects(List<Collect> collects) {
+        this.collects = collects;
     }
 
     //1,2,3
@@ -231,7 +272,6 @@ public class Blog {
         }
     }
 
-
     @Override
     public String toString() {
         return "Blog{" +
@@ -246,6 +286,8 @@ public class Blog {
                 ", commentabled=" + commentabled +
                 ", published=" + published +
                 ", recommend=" + recommend +
+                ", rr=" + rr +
+                ", visual=" + visual +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", type=" + type +
@@ -254,6 +296,7 @@ public class Blog {
                 ", comments=" + comments +
                 ", tagIds='" + tagIds + '\'' +
                 ", description='" + description + '\'' +
+                ", biaos=" + biaos +
                 '}';
     }
 }

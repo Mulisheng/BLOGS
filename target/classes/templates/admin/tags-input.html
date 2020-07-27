@@ -10,14 +10,14 @@
 <body>
 
   <!--导航-->
-  <nav th:fragment="menu(8)"  class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+  <nav th:replace="admin/_fragments :: menu(3)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
-        <h2 class="ui teal header item">航院7院Forum</h2>
+        <h2 class="ui teal header item">影视论坛</h2>
         <a href="#" th:href="@{/}" class="m-item item m-mobile-hide " th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>论坛首页</a>
-        <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
-        <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
-        <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>
+        <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>年份</a>
+        <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>类别</a>
+<!--        <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>-->
         <a href="#" th:if="${session.user != null && session.flag != 0}" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="mini info icon"></i>关于我</a>
         <a href="#" th:if="${session.flag == 0}"  th:href="@{/user}" class="m-item item m-mobile-hide" th:classappend="${n==6} ? 'active'"><i class="mini info icon"></i>个人主页</a>
         <a href="#" th:href="@{/admin}" class="m-item item m-mobile-hide" th:classappend="${n==7} ? 'active'"><i class="mini info icon"></i>管理员登录</a>
@@ -27,7 +27,7 @@
           <div class="ui dropdown  item">
             <div class="text">
               <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005">
-              李仁密
+              <span th:text="${session.user.nickname}"></span>
             </div>
             <i class="dropdown icon"></i>
             <div class="menu">

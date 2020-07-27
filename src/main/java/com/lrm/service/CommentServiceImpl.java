@@ -2,12 +2,16 @@ package com.lrm.service;
 
 import com.lrm.dao.CommentRepository;
 import com.lrm.po.Comment;
+import com.lrm.po.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +32,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Transactional
     @Override
-    public Comment saveComment(Comment comment) {
+    public Comment saveComment(Comment comment, HttpSession session) {
         Long parentCommentId = comment.getParentComment().getId();
         if (parentCommentId != -1) {
             comment.setParentComment(commentRepository.findOne(parentCommentId));
@@ -36,6 +40,7 @@ public class CommentServiceImpl implements CommentService {
             comment.setParentComment(null);
         }
         comment.setCreateTime(new Date());
+
         return commentRepository.save(comment);
     }
 

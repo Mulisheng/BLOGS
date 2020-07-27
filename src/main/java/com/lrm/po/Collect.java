@@ -1,9 +1,6 @@
 package com.lrm.po;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="t_collection")
@@ -14,6 +11,8 @@ public class Collect {
     private Long userid;
     private Long blogid;
     private String title;
+    @ManyToOne
+    private Blog blog;
     public Collect()
     {}
 
@@ -47,6 +46,14 @@ public class Collect {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 
     @Override

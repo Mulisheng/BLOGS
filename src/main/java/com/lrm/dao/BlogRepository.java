@@ -1,6 +1,7 @@
 package com.lrm.dao;
 
 import com.lrm.po.Blog;
+import com.lrm.po.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,7 +25,15 @@ public interface BlogRepository extends JpaRepository<Blog, Long>, JpaSpecificat
     @Query("select b from Blog b where b.title like ?1 or b.content like ?1")
     Page<Blog> findByQuery(String query,Pageable pageable);
 
+    @Transactional
+    @Modifying
+    @Query(value="update t_blog set visual =false  where user_id = ?1",nativeQuery = true)
+    int updateban(Long id);
 
+    @Transactional
+    @Modifying
+    @Query(value="update t_blog set visual =true  where user_id = ?1",nativeQuery = true)
+    int updateunban(Long id);
 
 
 
@@ -39,5 +48,7 @@ public interface BlogRepository extends JpaRepository<Blog, Long>, JpaSpecificat
 
     @Query("select b from Blog b where function('date_format',b.updateTime,'%Y') = ?1")
     List<Blog> findByYear(String year);
+
+
 
 }

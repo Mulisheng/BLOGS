@@ -1,11 +1,15 @@
 package com.lrm.web.admin;
 
+import com.lrm.dao.BiaoRepository;
 import com.lrm.dao.UserRepository;
 import com.lrm.po.Biao;
 import com.lrm.po.User;
 import com.lrm.service.BiaoService;
 import com.lrm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +26,16 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
+
     @Autowired
     private UserService userService;
     @Autowired
     private BiaoService biaoService;
     private UserRepository userRepository;
+
+
+
+
 
     @GetMapping
     public String loginPage( HttpSession session) {
@@ -78,13 +87,12 @@ public class LoginController {
             System.out.println(password);
 
             Biao biao=new Biao();
-            user.setPassword(null);
+           // user.setPassword(null);
             session.setAttribute("user",user);
             session.setAttribute("flag",2);
             System.out.println("马上跳转");
             session.setAttribute("flag1",2);
-            biao.setDct("111");
-            biaoService.bsave(biao);
+
             return "redirect:/admin";
         } else {
             attributes.addFlashAttribute("message", "用户名和密码错误");

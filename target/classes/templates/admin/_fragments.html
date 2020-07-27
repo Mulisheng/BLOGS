@@ -14,11 +14,12 @@
 <nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
   <div class="ui container">
     <div class="ui inverted secondary stackable menu">
-      <h2 class="ui teal header item">7院管理后台</h2>
+      <h2 class="ui teal header item">影视论坛</h2>
       <a href="#" th:href="@{/admin/blogs}" class=" m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>帖子管理</a>
-      <a href="#" th:href="@{/admin/types}" class=" m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
-      <a href="#" th:href="@{/admin/tags}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
+      <a href="#" th:href="@{/admin/types}" class=" m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>年份</a>
+      <a href="#" th:href="@{/admin/tags}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>类别</a>
       <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="mini tags icon"></i>游客首页</a>
+      <a href="#" th:href="@{/usershow}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="mini tags icon"></i>用户管理</a>
       <div class="right m-item m-mobile-hide menu">
         <div class="ui dropdown  item">
           <div class="text">
@@ -32,6 +33,7 @@
             <a href="#" class="item" th:href="@{/about}">个人信息</a>
 
             <a href="#" class="item" th:href="@{/user/updatepassword/{id} (id=${session.user.getId()})}" >修改密码</a>
+            <a href="#" class="item" th:href="@{/user/report}">举报信息</a>
           </div>
         </div>
       </div>
