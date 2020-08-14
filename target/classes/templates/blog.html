@@ -37,8 +37,11 @@
   </nav>
 
   <!--中间内容-->
+
   <div id="waypoint" class="m-container-small m-padded-tb-big animated fadeIn">
     <div class="ui container">
+      <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">举报成功
+      </div>
       <div class="ui top attached segment">
         <div class="ui horizontal link list">
           <div class="item">
@@ -87,6 +90,7 @@
         <!--中间主要内容部分-->
         <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:utext="${blog.content}">
 
+          <img src="../static/images/bc997afb-13d8-47e9-9dff-a0c9a98895d8.png">
           <h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
 
           <pre><code class="language-css">p { color: red }</code></pre>
@@ -174,6 +178,9 @@
           <blockquote>
             <b>附录一</b>：<a href="#appendix1"><i class="serif">Typo.css</i> 排版偏重点</a>
           </blockquote>
+          <p>
+          <img src="../static/images/bc997afb-13d8-47e9-9dff-a0c9a98895d8.png">
+          </p>
 
           <p>目前已有像百姓网等全面使用 <i class="serif">Typo.css</i> 的项目，测试平台的覆盖，特别是在<abbr title="手机、平板电脑等移动平台">移动端</abbr>上还没有覆盖完主流平台，希望有能力的同学能加入测试行列，或者加入到 <i class="serif">Typo.css</i>
             的开发。加入方法：<a href="https://github.com/sofish/Typo.css">参与 <i class="serif">Typo.css</i> 开发</a>。如有批评、建议和意见，也随时欢迎给在 Github 直接提 <a

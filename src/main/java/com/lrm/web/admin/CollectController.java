@@ -14,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @RequestMapping("/collect")
 public class CollectController {
@@ -43,7 +41,7 @@ public class CollectController {
         collectRepository.save(ct);
         attributes.addFlashAttribute("message","收藏成功");
 
-        return "redirect:/";
+        return "redirect:/blog/"+blogid+"";
     }
 
     //这里  LOOK

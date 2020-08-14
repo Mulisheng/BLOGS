@@ -71,7 +71,8 @@ public class DctController {
         biao.setType(type);
         biao.setStatus(false);
         biaoService.bsave(biao);
-        return "redirect:/";
+
+        return "redirect:/blog/"+id+"";
     }
 
 
@@ -111,7 +112,7 @@ public class DctController {
     {
         System.out.println("reportBan in ");
         Biao biao=biaoRepository.findOne(id);
-        Blog blog= blogService.getBlog(biao.getBlogid());
+        Blog blog= blogService.getBlog(biao.getBlog().getId());
         User u=userRepository.findOne(blog.getUser().getId());
         blog.setVisual(false);
         blogService.saveBlog(blog);

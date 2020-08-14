@@ -8,6 +8,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    mode: LEGACYHTML5
+    encoding: utf-8
+    content-type: text/html
+    cache: false
 
 logging:
   level:

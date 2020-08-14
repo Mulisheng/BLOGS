@@ -1,10 +1,8 @@
 package com.lrm.web.admin;
 
 import com.lrm.dao.BiaoRepository;
-import com.lrm.dao.BlogRepository;
 import com.lrm.dao.CommentRepository;
 import com.lrm.dao.UserRepository;
-import com.lrm.po.Biao;
 import com.lrm.po.Blog;
 import com.lrm.po.Following;
 import com.lrm.po.User;
@@ -12,11 +10,8 @@ import com.lrm.service.BiaoService;
 import com.lrm.service.BlogService;
 import com.lrm.service.FollowService;
 import com.lrm.service.UserService;
-import com.lrm.vo.BlogQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -268,7 +263,7 @@ public String encrytion(String s){
         model.addAttribute("followingStatus",followingStatus);
         model.addAttribute("page",blogService.listPost(pageable,id));
         session.setAttribute("otherUser",otherUser);
-        return "/xman";
+        return "xman";
     }
 
 
@@ -311,7 +306,7 @@ public String encrytion(String s){
         model.addAttribute("followingStatus",followingStatus);
         model.addAttribute("page",blogService.listPost(pageable,id));
         session.setAttribute("otherUser",otherUser);
-        return "/xman";
+        return "xman";
     }
 
 
@@ -338,7 +333,7 @@ public String encrytion(String s){
         model.addAttribute("followingStatus",followingStatus);
         model.addAttribute("page",blogService.listPost(pageable,id));
         session.setAttribute("otherUser",otherUser);
-        return "/xman";
+        return "xman";
     }
 
 

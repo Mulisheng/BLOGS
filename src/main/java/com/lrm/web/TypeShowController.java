@@ -6,7 +6,6 @@ import com.lrm.service.BlogService;
 import com.lrm.service.TypeService;
 import com.lrm.vo.BlogQuery;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -39,10 +38,12 @@ public class TypeShowController {
         BlogQuery blogQuery = new BlogQuery();
         blogQuery.setTypeId(id);
         System.out.println("id"+id);
-
         model.addAttribute("types", types);
+        System.out.println("ty 1");
         model.addAttribute("page", blogService.typeBlogList(pageable, id));
+        System.out.println("ty 2");
         model.addAttribute("activeTypeId", id);
+        System.out.println("ty 3");
         return "types";
     }
 

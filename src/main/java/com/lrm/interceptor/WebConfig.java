@@ -13,6 +13,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/admin/**")
                 .excludePathPatterns("/admin")
+                .excludePathPatterns("/../static/images/")
                 .excludePathPatterns("/admin/login");
     }
 }

@@ -1,27 +1,37 @@
 package com.lrm.web;
 
 import com.lrm.dao.*;
-//import com.lrm.dao.ReportRepository;
 import com.lrm.po.*;
 import com.lrm.service.*;
 import com.lrm.vo.BlogQuery;
 import com.lrm.vo.UserQuery;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+//import com.lrm.dao.ReportRepository;
 
 @Controller
 public class IndexController {
+    @Value("${file.path}")
+    private String filePath;
     @Autowired
     private  BlogRepository blogRepository;
     @Autowired
@@ -388,5 +398,52 @@ public class IndexController {
         model.addAttribute("page", historyService.listHistory(pageable,h1));
         return "personalhistory :: blogList";
     }
+
+
+
+
+    @PostMapping(value = "/uploadfile")
+    public @ResponseBody
+    Map<String,Object> demo(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file, HttpServletRequest request) {
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+
+
+
+
+        //保存
+        try {
+//            File imageFolder= new File(request.getServletContext().getRealPath("static/images"));
+//            File targetFile = new File(imageFolder,file.getOriginalFilename());
+//            if(!targetFile.getParentFile().exists())
+//                targetFile.getParentFile().mkdirs();
+//            file.transferTo(targetFile);
+//            BufferedImage img = ImageUtil.change2jpg(targetFile);
+//            ImageIO.write(img, "jpg", targetFile);
+            /*            file.transferTo(targetFile);*/
+//            byte[] bytes = file.getBytes();
+//            Path path = Paths.get(realPath + file.getOriginalFilename());
+//            Files.write(path, bytes);
+            String extName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")); //拿到文件扩展名
+            String fileName = UUID.randomUUID().toString() + extName; //uuid+扩展名作为name
+            FileCopyUtils.copy(file.getInputStream(),new FileOutputStream(new File(filePath+fileName)));//FileOutputStream存放位置
+            String url = "/images/"
+                    + fileName;
+
+
+            resultMap.put("success", 1);
+            resultMap.put("message", "上传成功！");
+            resultMap.put("url",url);
+            System.out.println(url+fileName);
+        } catch (Exception e) {
+            resultMap.put("success", 0);
+            resultMap.put("message", "上传失败！");
+            e.printStackTrace();
+        }
+        System.out.println(resultMap.get("success"));
+        return resultMap;
+    }
+
+
+
 
 }

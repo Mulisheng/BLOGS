@@ -9,7 +9,7 @@ public class ResourceConfigAdapter extends WebMvcConfigurerAdapter {
         //添加虚拟路径映射
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/images/**").addResourceLocations("file:F:\\BLOGS\\7-2-ｍｏｒｎｉｎｇ＇\\BLOGS\\src\\main\\resources\\static\\images\\");
+            registry.addResourceHandler("/images/**").addResourceLocations("file:F:\\BLOGS\\7-2-ｍｏｒｎｉｎｇ＇\\7-3\\BLOGS\\src\\main\\resources\\static\\images\\");
         }
     }
 
